@@ -50,32 +50,32 @@ class App extends Component {
 
 render() {
     return (
-      <div>
+      <div class="body">
           <div>
             <h1>IronContacts</h1>
           </div>
-          <div>
-            <ul>
-              <li>Picture</li>
-              <li>Name</li>
-              <li>Popularity</li>
-            </ul>
-          </div>
+            <div class="buttons">
+              <div>
+                <button onClick={this.addContact}>Random Contact</button>
+              </div>
+              <div>
+                <button onClick={this.sortByPopularity}>Sort By popularity</button>
+              </div>
+              <div>
+                <button onClick={this.sortByName}>Sort By Name</button>
+              </div>
+            </div>
           <div>
           <table className="table">
+            <tr class="table-title">
+              <td>Picture</td>
+              <td>Name</td>
+              <td>Popularity</td>
+            </tr>
           {this.state.contacts.map((item, index) => {
           return <Contact key={index} pictureUrl={item.pictureUrl} name={item.name} popularity={item.popularity} onDelete={this.handleDelete} />
           })}
           </table>
-          </div>
-          <div>
-            <button onClick={this.addContact}>Random Contact</button>
-          </div>
-          <div>
-            <button onClick={this.sortByPopularity}>Sort By popularity</button>
-          </div>
-          <div>
-            <button onClick={this.sortByName}>Sort By Name</button>
           </div>
       </div>
     );
