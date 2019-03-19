@@ -5,7 +5,9 @@ class Contact extends Component {
     const {
       pictureUrl, 
       name, 
-      popularity
+      popularity,
+      onDelete,
+      index
     } = this.props;
 
     return(
@@ -13,6 +15,7 @@ class Contact extends Component {
         <img src={pictureUrl} className="item" alt="."/>
         <h2>{name}</h2>
         <p>{popularity}</p>
+        <button onClick={() => {onDelete(index)}}>Delete</button>
       </li>
     )
   }

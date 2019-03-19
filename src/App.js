@@ -20,7 +20,7 @@ class App extends Component {
       return (a.name).localeCompare(b.name);
       });
     this.setState({
-      contactsInitialList: sortedByName
+      contactsInitialList: [...sortedByName]
     })
   }
 
@@ -30,7 +30,14 @@ class App extends Component {
       });
 
     this.setState({
-      contactsInitialList: sortedByPopularity
+      contactsInitialList: [...sortedByPopularity]
+    })
+  }
+
+  deleteFunc = (contact) => {
+    const newArray = this.state.contactsInitialList.splice(contact.index, 1);
+    this.setState({
+      contactInitialList: [...newArray]
     })
   }
 
@@ -40,8 +47,10 @@ class App extends Component {
               name= {item.name}
               pictureUrl={item.pictureUrl}
               popularity={item.popularity}
-              key={index}
-            />        
+              key={`id${index}`}
+              index={index}
+              onDelete={this.deleteFunc}
+            />
     }))
   }
 
