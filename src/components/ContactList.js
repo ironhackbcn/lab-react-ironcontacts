@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import contacts from '../contacts'
-import { Contact } from './Contact'
+import contacts from '../contacts';
+import { Contact } from './Contact';
+import { sortArray } from '../helpers/sort'
+import { randomNumber } from '../helpers/randomContact'
 
 const dataOfFive = contacts.slice(0, 5);
 
@@ -18,9 +20,9 @@ export class ContactList extends Component {
     if (contacts.length === this.state.contacts.length) {
       return;
     }
-    let newContact = contacts[Math.floor(Math.random() * contacts.length)];
-    while (this.state.contacts.includes(newContact)) {
-      newContact = contacts[Math.floor(Math.random() * contacts.length)];
+    let newContact = contacts[randomNumber(contacts)];
+    while (this.state.contacts.filter(contact => contact.name === newContact.name).length > 0) {
+      newContact = contacts[randomNumber(contacts)];
     }
     this.setState({
       contacts: [newContact, ...this.state.contacts]
@@ -35,14 +37,14 @@ export class ContactList extends Component {
   }
 
   handleSortByName = () => {
-    const sortedList = [...this.state.contacts].sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    const sortedList = sortArray([...this.state.contacts], 'name')
     this.setState({
       contacts: sortedList,
     })
   }
 
   handleSortByPopularity = () => {
-    const sortedList = [...this.state.contacts].sort((a, b) => (b.popularity - a.popularity));
+    const sortedList = sortArray([...this.state.contacts], 'popularity')
     this.setState({
       contacts: sortedList,
     })

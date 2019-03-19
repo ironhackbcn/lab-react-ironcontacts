@@ -13,12 +13,13 @@ export class Contact extends Component {
   }
 
   render() {
+    const { image, name, popularity } = this.props;
     return (
       <tr>
-        <td><img style={imageSize} src={this.props.image} alt={this.props.name} /></td>
-        <td>{this.props.name}</td>
-        <td>{this.handleDecimals(this.props.popularity)}</td>
-        <td><button onClick={() => this.props.onRemove(this.props.name)}>Remove Contact</button></td>
+        <td><img style={imageSize} src={image} alt={name} /></td>
+        <td>{name}</td>
+        <td>{this.handleDecimals(popularity)}</td>
+        <td><button onClick={() => this.props.onRemove(name)}>Remove Contact</button></td>
       </tr>
     );
   }
