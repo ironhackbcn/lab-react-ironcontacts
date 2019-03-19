@@ -33,11 +33,31 @@ class App extends Component {
     })
   }
 
+  handleSortByName = () => {
+    const sortByName = this.state.initialContacts.sort((a,b) => {
+      return (a.name).localeCompare(b.name);
+    })
+    this.setState({
+      initialContacts: [...sortByName]
+    })
+  }
+
+  handleSortByPopularity = () => {
+    const sortByPopularity = this.state.initialContacts.sort((a,b) => {
+      return (b.popularity) - (a.popularity)
+    })
+    this.setState({
+      initialContacts: [...sortByPopularity]
+    })
+  }
+
   render() {
     return (
       <section>
         <h1 onClick={this.handleClick}>IronContacts</h1>
         <button onClick={this.handleClick}>Add random contact</button>
+        <button onClick={this.handleSortByName}>Sort by name</button>
+        <button onClick={this.handleSortByPopularity}>Sort by popularity</button>
         {this.renderList()}
       </section>
     )
