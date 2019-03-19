@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   sortByNameHandler =() => {
-    const sorted = this.state.data.sort((a, b) => {      
+    const sorted = [this.state.data].sort((a, b) => {      
       return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
     });
       this.setState({
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   sortByPopularityHandler =() => {
-    const sorted = this.state.data.sort((a, b) => {
+    const sorted = [...this.state.data].sort((a, b) => {
       return (a.popularity < b.popularity) ? 1 : (a.popularity > b.popularity) ? -1 : 0;
     });
       this.setState({
