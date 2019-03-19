@@ -31,3 +31,31 @@
     transform: rotate(360deg);
   }
 }
+
+img {
+  width: 100px;
+  height: 150px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+}
+.titles {
+  display: flex;
+  justify-content: space-around;
+  margin-left:15%;
+  margin-right: 15%;
+}
+
+ul {
+  margin-left:15%;
+  margin-right: 15%;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
