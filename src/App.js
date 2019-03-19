@@ -5,49 +5,56 @@ import './App.css';
 import Card from './components/Card'
 
 import contacts from './data/contacts.json'
+import randomContact from './helpers/index'
 
 class App extends Component {
 
   state = {
-    initialContacts: contacts.slice(0, 5)
+    contactsList: contacts.slice(0, 5)
   }
 
   renderList() {
-    return this.state.initialContacts.map((contact, index) => {
+    return this.state.contactsList.map((contact, index) => {
       return (
         <Card
           key={index}
-          imgUrl={contact.pictureUrl}
-          imgAlt={contact.name}
-          name={contact.name}
-          popularity={contact.popularity}
+          id={index}
+          onDelete={this.handleDelete}
+          contact={contact}
         />
       )
     })
   }
 
   handleClick = () => {
-    const contactRandom = contacts[Math.floor(Math.random() * contacts.length)]
     this.setState({
-      initialContacts: [...this.state.initialContacts, contactRandom]
+      contactsList: [...this.state.contactsList, randomContact()]
     })
   }
 
   handleSortByName = () => {
-    const sortByName = this.state.initialContacts.sort((a,b) => {
-      return (a.name).localeCompare(b.name);
+    const sortByName = this.state.contactsList.sort((contactA, contactB) => {
+      return (contactA.name).localeCompare(contactB.name);
     })
     this.setState({
-      initialContacts: [...sortByName]
+      contactsList: [...sortByName]
     })
   }
 
   handleSortByPopularity = () => {
-    const sortByPopularity = this.state.initialContacts.sort((a,b) => {
-      return (b.popularity) - (a.popularity)
+    const sortByPopularity = this.state.contactsList.sort((contactA, contactB) => {
+      return (contactB.popularity) - (contactA.popularity)
     })
     this.setState({
-      initialContacts: [...sortByPopularity]
+      contactsList: [...sortByPopularity]
+    })
+  }
+
+  handleDelete = (id) => {
+    const copyOfContactsList = this.state.contactsList
+    copyOfContactsList.splice(id, 1);
+    this.setState({
+      contactsList: [...copyOfContactsList]
     })
   }
 
