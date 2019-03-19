@@ -1,27 +1,65 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Contact from './components/Contact';
+import contacts from './data/contacts.json';
 
 class App extends Component {
+  state = {
+    contactsInitialList: contacts.slice(0, 5)
+  }
+
+  handleClick = () => {
+    const randomContact = contacts[Math.floor(Math.random()*contacts.length)];
+    this.setState({
+      contactsInitialList: [...this.state.contactsInitialList, randomContact]
+    })
+  }
+
+  sortByName = () => {
+    const sortedByName = this.state.contactsInitialList.sort((a,b) => {
+      return (a.name).localeCompare(b.name);
+      });
+    this.setState({
+      contactsInitialList: sortedByName
+    })
+  }
+
+  sortByPopularity = () => {
+    const sortedByPopularity = this.state.contactsInitialList.sort((a,b) => {
+      return b.popularity - a.popularity;
+      });
+
+    this.setState({
+      contactsInitialList: sortedByPopularity
+    })
+  }
+
+  renderList() {
+  return (this.state.contactsInitialList.map((item, index) => {
+    return  <Contact
+              name= {item.name}
+              pictureUrl={item.pictureUrl}
+              popularity={item.popularity}
+              key={index}
+            />        
+    }))
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>IronContacts</h1>
+        <button onClick={this.handleClick}>Add random contact</button>
+        <button onClick={this.sortByName}>Sort by name</button>
+        <button onClick={this.sortByPopularity}>Sort by popularity</button>
+        <div className="header">
+          <h2>Picture</h2>
+          <h2>Name</h2>
+          <h2>Popularity</h2>
+        </div>
+        <ul>{this.renderList()}</ul>
       </div>
-    );
+    )
   }
 }
 
