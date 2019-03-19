@@ -8,10 +8,14 @@ import contacts from './data/contacts.json'
 
 class App extends Component {
 
+  state = {
+    initialContacts: contacts.slice(0, 5)
+  }
+
   renderList() {
-    return contacts.map((contact, index) => {
+    return this.state.initialContacts.map((contact, index) => {
       return (
-        <Card 
+        <Card
           key={index}
           imgUrl={contact.pictureUrl}
           imgAlt={contact.name}
@@ -19,13 +23,21 @@ class App extends Component {
           popularity={contact.popularity}
         />
       )
-    }).slice(0,5)
+    })
+  }
+
+  handleClick = () => {
+    const contactRandom = contacts[Math.floor(Math.random() * contacts.length)]
+    this.setState({
+      initialContacts: [...this.state.initialContacts, contactRandom]
+    })
   }
 
   render() {
     return (
       <section>
-        <h1>IronContacts</h1>
+        <h1 onClick={this.handleClick}>IronContacts</h1>
+        <button onClick={this.handleClick}>Add random contact</button>
         {this.renderList()}
       </section>
     )
