@@ -5,7 +5,7 @@ import './App.css';
 import Card from './components/Card'
 
 import contacts from './data/contacts.json'
-import randomContact from './helpers/index'
+import generateRandomContact from './helpers/index'
 
 class App extends Component {
 
@@ -27,9 +27,19 @@ class App extends Component {
   }
 
   handleClick = () => {
-    this.setState({
-      contactsList: [...this.state.contactsList, randomContact()]
+    const randomContact = generateRandomContact()
+    let isRepeated = false
+
+    this.state.contactsList.forEach(contact => {
+      if (contact.name === randomContact.name) {
+        isRepeated = true
+      }
     })
+    if (!isRepeated) {
+      this.setState({
+        contactsList: [...this.state.contactsList, randomContact]
+      })
+    }
   }
 
   handleSortByName = () => {
