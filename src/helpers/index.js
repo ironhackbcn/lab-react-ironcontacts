@@ -1,5 +1,5 @@
 export const sortByName = (arr) => {
-  arr.sort((a, b) => {
+  return arr.sort((a, b) => {
     const nameA = a.name.toUpperCase(); 
     const nameB = b.name.toUpperCase(); 
     if (nameA < nameB) {
@@ -13,7 +13,7 @@ export const sortByName = (arr) => {
 }
 
 export const sortByPopularity = (arr) => {
-  arr.sort( (a, b) => {
+  return arr.sort( (a, b) => {
     return a.popularity - b.popularity;
   })
 }

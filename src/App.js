@@ -19,26 +19,15 @@ class App extends Component {
   }
 
   sortByName = () => {
+    let contacts = sortByName([...this.state.contacts])
     this.setState({
-      contacts: [...this.state.contacts].sort((a, b) => {
-        const nameA = a.name.toUpperCase(); 
-        const nameB = b.name.toUpperCase(); 
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        return 0;
-      })
-    })
-  }
+      contacts
+  })}
 
   sortByPopularity = () => {
+    let contacts = sortByPopularity([...this.state.contacts])
     this.setState({
-      contacts: [...this.state.contacts].sort( (a, b) => {
-        return a.popularity - b.popularity;
-      })
+      contacts
     })
   }
 
