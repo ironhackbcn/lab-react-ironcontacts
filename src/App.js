@@ -3,6 +3,7 @@ import './App.css';
 
 // Components
 import Card from './components/Card'
+import Form from './components/Form'
 
 import contacts from './data/contacts.json'
 import generateRandomContact from './helpers/index'
@@ -68,9 +69,16 @@ class App extends Component {
     })
   }
 
+  handleAddUser = (newContact) => {
+    this.setState({
+      contactsList: [...this.state.contactsList, newContact]
+    })
+  }
+
   render() {
     return (
       <section>
+        <Form addNewContact={this.handleAddUser} />
         <h1 onClick={this.handleClick}>IronContacts</h1>
         <button onClick={this.handleClick}>Add random contact</button>
         <button onClick={this.handleSortByName}>Sort by name</button>
