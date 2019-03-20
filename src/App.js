@@ -3,6 +3,7 @@ import contacts from './data/contacts.json';
 import ListItem from './components/ListItem';
 import Navbar from './components/Navbar'
 import { sortByName, sortByPopularity } from './helpers/index';
+import Form from './components/Form'
 import './App.css';
 
 class App extends Component {
@@ -38,18 +39,24 @@ class App extends Component {
       contacts
     })
   }
+
+  insertContact = (contact) => {
+    this.setState({
+      contacts: [...this.state.contacts, contact]
+    })
+  }
   render() {
     
     return (
       <div className="App">
-      <Navbar 
-        picture="picture"
-        name="name"
-        popularity="popularity"
-        title="IronContacts"
-      />
+        <Navbar 
+          picture="picture"
+          name="name"
+          popularity="popularity"
+          title="IronContacts"
+        />
         {this.state.contacts.map((contact, index) => (
-          <div>
+        <div>
           <ListItem 
             key={index}
             src={contact.pictureUrl}
@@ -65,6 +72,9 @@ class App extends Component {
         <button onClick={this.addContact}>Add contact</button>
         <button onClick={this.sortByName}>Sort Name</button>
         <button onClick={this.sortByPopularity}>Sort Popularity</button>
+        <Form 
+          insertContact={this.insertContact}
+        />
       </div>
     );
   }
