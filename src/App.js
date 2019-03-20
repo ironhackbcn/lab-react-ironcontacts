@@ -2,12 +2,25 @@ import React, { Component } from 'react';
 import './App.css';
 import Card from './components/Card';
 import contacts from './data/contacts.json';
-import { sortByName, sortByPopularity } from './helpers'
+import { sortByName, sortByPopularity } from './helpers';
+import Form from './components/Form';
 
 class App extends Component {
   state = {
     contactsNewList: contacts.slice(0, 5)
   };
+
+  handleSubmit = (e, state) => {
+    e.preventDefault();
+    let newContact = {
+      name: state.name,
+      popularity: parseInt(state.popularity),
+      pictureUrl: state.image
+    }
+    this.setState({
+      contactsNewList: [...this.state.contactsNewList, newContact]
+    })
+  }
 
   handleClick = () => {
     const randomContact = contacts[Math.floor(Math.random()*contacts.length)]
@@ -55,6 +68,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>IronContacts</h1>
+        <Form
+        submit={this.handleSubmit}
+        ></Form>
         <button onClick={this.handleClick}>Add random contact</button>
         <button onClick={this.sortByName}>Sort by name</button>
         <button onClick={this.sortByPopularity}>Sort by popularity</button>
