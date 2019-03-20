@@ -1,36 +1,51 @@
 .App {
   text-align: center;
+  font-family: Helvetica;
+  margin: 0 30px;
 }
 
-img.item {
-  width: 5vw;
-  height: auto;
-  margin: 15px;
-}
-
-ul {
+h1 {
+  font-size: 5em;
   display: flex;
-  flex-direction: column;
+  padding: 0 30px;
+  margin: 25px 0 50px 0;
+}
+
+h2 {
+  font-size: 2em;
+  display: flex;
+  flex-direction: row;
+  padding: 0 30px;
+}
+
+h3, p {
+  margin: 0 20px;
+  width: 100%;
+  align-self: center;
+}
+
+.titles {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.card img {
+  width: 20%;
+  height: 20%;
+  margin: 15px;
 }
 
 li {
   display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
+  width: 80%;
 }
 
-p, h2 {
-  padding: 0 30px;
-  margin-bottom: 0;
-}
-
-.header {
+.card {
   display: flex;
-  flex-flow: row;
-  margin-left: 15px;
 }
 
-p {
-  text-align: end;
+button {
+  height: 30px;
+  align-self: center;
 }

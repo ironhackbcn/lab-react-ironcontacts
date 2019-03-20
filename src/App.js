@@ -1,58 +1,55 @@
 import React, { Component } from 'react';
 import './App.css';
-import Contact from './components/Contact';
+import Card from './components/Card';
 import contacts from './data/contacts.json';
+import { sortByName, sortByPopularity } from './helpers'
 
 class App extends Component {
   state = {
-    contactsInitialList: contacts.slice(0, 5)
-  }
+    contactsNewList: contacts.slice(0, 5)
+  };
 
   handleClick = () => {
-    const randomContact = contacts[Math.floor(Math.random()*contacts.length)];
+    const randomContact = contacts[Math.floor(Math.random()*contacts.length)]
     this.setState({
-      contactsInitialList: [...this.state.contactsInitialList, randomContact]
-    })
-  }
+      contactsNewList: [...this.state.contactsNewList, randomContact]
+    });
+  };
 
   sortByName = () => {
-    const sortedByName = this.state.contactsInitialList.sort((a,b) => {
-      return (a.name).localeCompare(b.name);
-      });
+    let contactsNewList = sortByName([...this.state.contactsNewList])
     this.setState({
-      contactsInitialList: [...sortedByName]
-    })
-  }
+      contactsNewList
+    });
+  };
 
   sortByPopularity = () => {
-    const sortedByPopularity = this.state.contactsInitialList.sort((a,b) => {
-      return b.popularity - a.popularity;
-      });
-
+    let contactsNewList = sortByPopularity([...this.state.contactsNewList])
     this.setState({
-      contactsInitialList: [...sortedByPopularity]
-    })
-  }
+      contactsNewList
+    });
+  };
 
-  deleteFunc = (contact) => {
-    const newArray = this.state.contactsInitialList.splice(contact.index, 1);
+  deleteFunc = (name) => {
+    const filtered = this.state.contactsNewList.filter((item)=> {
+      return name !== item.name;
+    });
     this.setState({
-      contactInitialList: [...newArray]
-    })
-  }
+      contactsNewList: filtered
+    });
+  };
 
-  renderList() {
-  return (this.state.contactsInitialList.map((item, index) => {
-    return  <Contact
-              name= {item.name}
-              pictureUrl={item.pictureUrl}
-              popularity={item.popularity}
+  renderList(){
+    return (this.state.contactsNewList.map((item, index) => {
+      return <Card
+              image={item.pictureUrl}
+              name={item.name}
+              popularity={Math.round(`${item.popularity}`*100)/100}
               key={`id${index}`}
-              index={index}
               onDelete={this.deleteFunc}
-            />
-    }))
-  }
+             />
+    }));
+  };
 
   render() {
     return (
@@ -61,7 +58,7 @@ class App extends Component {
         <button onClick={this.handleClick}>Add random contact</button>
         <button onClick={this.sortByName}>Sort by name</button>
         <button onClick={this.sortByPopularity}>Sort by popularity</button>
-        <div className="header">
+        <div className="titles">
           <h2>Picture</h2>
           <h2>Name</h2>
           <h2>Popularity</h2>
@@ -70,6 +67,6 @@ class App extends Component {
       </div>
     )
   }
-}
+};
 
 export default App;
