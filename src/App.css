@@ -31,3 +31,19 @@
     transform: rotate(360deg);
   }
 }
+
+.flexbox {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.container {
+  margin: 2rem 4rem 0 2rem;
+}
+
+.btn {
+  padding: 1rem;
+  background-color: red;
+  color: white;
+}
