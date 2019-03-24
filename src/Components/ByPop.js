@@ -7,4 +7,5 @@ render(){
         <button onClick={this.props.button}>Sort By Popularity</button>
     )}
 }
+
 export default ByPop;

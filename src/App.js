@@ -52,15 +52,25 @@ class App extends Component {
       <>
       <div className="App">
         <h1>Iron Contacts</h1>
-          <Add button={this.random} />
-          <ByName button={this.SortName} />
-          <ByPop button={this.SortPop} />
-          <div className="h2">
-            <h2>Pic</h2>
-            <h2>Name</h2>
-            <h2>Pop</h2>
-          </div>
-          <List list={contacts} del={this.deleteContact}/>
+        <Add button={this.random} />
+        <ByName button={this.SortName} />
+        <ByPop button={this.SortPop} />
+        <div className="h2">
+          <h2>Pic</h2>
+          <h2>Name</h2>
+          <h2>Pop</h2>
+        </div>
+        <ul>
+          {contacts.map((contact,index) => {
+            return ( <List
+              key={index}
+              index={index}
+              list={contact}
+              del={this.deleteContact}
+            />
+            )
+          })};
+        </ul>
       </div>
       </>
     );
