@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .App-logo {
@@ -21,6 +25,17 @@
 
 .App-link {
   color: #61dafb;
+}
+
+button.btn {
+  padding: 10px 25px;
+  font-size: 24px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+th {
+  font-size: 25px;
 }
 
 @keyframes App-logo-spin {
