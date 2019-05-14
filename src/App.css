@@ -1,12 +1,19 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-left: 300px;
 }
 
 
 h1 {
   font-size: 60px;
+}
+
+.RandomButton {
+  padding: 20px 35px;
+  background-color: white;
+  font-size: 20px;
+  margin: 30px 0px;
 }
 
 table {
