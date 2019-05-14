@@ -12,10 +12,17 @@ class ContactsTable extends React.Component {
     }
   }
 
-
   addContact = () => {
     const randomNumber = Math.floor((Math.random() * this.props.contactsArray.length - 1) + 5);
     this.state.contacts.push(this.props.contactsArray[randomNumber])
+    this.setState({ contacts: this.state.contacts });
+  }
+
+
+  deleteContact = (contactIndex) => {
+    //console.log("DELETE", contactIndex)
+
+    this.state.contacts.splice(contactIndex, 1);
     this.setState({ contacts: this.state.contacts });
   }
 
@@ -32,7 +39,6 @@ class ContactsTable extends React.Component {
       if (nameA > nameB) {
         return 1;
       }
-      // names must be equal
       return 0;
     });
 
@@ -64,10 +70,15 @@ class ContactsTable extends React.Component {
               <th>Picture</th>
               <th>Name</th>
               <th>Popularity</th>
+              <th>Action</th>
             </tr>
 
             {
-              this.state.contacts.map((oneContact) => <TableRow key={shortid.generate()} contact={oneContact} />)
+              this.state.contacts.map((oneContact, index) =>
+                <TableRow key={index}
+                  arrayIndex={index}
+                  contact={oneContact}
+                  deleteContactFunction={this.deleteContact} />)
             }
           </tbody>
         </table>
