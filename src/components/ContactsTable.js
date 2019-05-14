@@ -19,11 +19,44 @@ class ContactsTable extends React.Component {
     this.setState({ contacts: this.state.contacts });
   }
 
+  sortContactsByName = () => {
+
+
+    // sort by name
+    const sortedArray = this.state.contacts.sort(function (a, b) {
+      let nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+
+    this.setState({ contacts: sortedArray });
+  }
+
+
+  sortContactsByPopularity = () => {
+
+    // sort by popularity
+    const sortedArray = this.state.contacts.sort(function (a, b) {
+      return a.popularity - b.popularity;
+    });
+
+    this.setState({ contacts: sortedArray.reverse() });
+  }
+
 
   render() {
     return (
       <div>
         <button className='btn' onClick={this.addContact}>Add Random Contact</button>
+        <button className='btn' onClick={this.sortContactsByName}>Sort by name</button>
+        <button className='btn' onClick={this.sortContactsByPopularity}>Sort by popularity</button>
 
         <table>
           <tbody>
