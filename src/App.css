@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -21,6 +22,22 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App table{
+  width: 50%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.App table td{
+  width: 10%;
+}
+.App table td img{
+  width: 100%;
+  transition: all 300ms;
+}
+.App table td img:hover{
+  transform: scale(1.1) rotate(-5deg);
 }
 
 @keyframes App-logo-spin {

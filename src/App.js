@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import contacts from './data/contacts.json';
 
 class App extends Component {
+
   render() {
+
+    const ContactList = contacts.slice(0,5).map((contact, index) =>
+      <tr>
+        <td key={index}><img src={contact.pictureUrl}/></td>
+        <td key={index}>{contact.name}</td>
+        <td key={index}>{contact.popularity}</td>
+      </tr>
+        
+      );
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>IRONCONTACTS</h1>
+        <table>
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Picture</th>
+              <th>Name</th>
+              <th>Popularity</th>
+            </tr>
+              {ContactList}
+          </tbody>
+        </table>
       </div>
     );
   }
-}
 
+}
 export default App;
