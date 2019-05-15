@@ -1,7 +1,6 @@
 import React from 'react'
 import contacts from '../data/contacts.json'
 
-
 class Contacts extends React.Component {
   constructor(props) {
     super(props);
@@ -9,32 +8,41 @@ class Contacts extends React.Component {
       data: props.data.slice(0,5)
     }
   }
+
   getRandom ()  {
-    const randomContact = contacts[Math.floor(Math.random() * contacts.length)];
+    console.log(this)
+    //make copy of contacts and splice randomContact so that it cannot be selected twice!!!
+    const contactsCopy = [...contacts]
+    const randomNum = Math.floor(Math.random() * contactsCopy.length);
+    const randomContact = contactsCopy.splice(randomNum, 1)
+    
     this.setState({
-      data: [...this.state.data, randomContact],
+      data: [...this.state.data, randomContact[0]],
     });
-  } 
+  }
+
   sortNames() {
     this.setState({
       data: this.state.data.sort((a, b) => (a.name > b.name) ? 1 : -1)
-      // 1 -  contact b takes precedence in sorting over the contact a
+      // 1 -  contact b takes precedence in sorting over contact a
       //-1 - does the opposite
 
     })
   }
-  sortByPopularity(){
+
+  sortByPopularity() {
     this.setState({
       data: this.state.data.sort((a, b) => (a.popularity > b.popularity) ? -1 : 1)
 
     })
   }
 
-  delete(contactIndex){
+  delete(contactIndex) {
     const contactsCopy = this.state.data;
     contactsCopy.splice(contactIndex, 1);
     this.setState( {data: contactsCopy} );
   }
+  
     render() {
       return (
         <div>
@@ -54,16 +62,14 @@ class Contacts extends React.Component {
          
         })
       }
-      
       </div>
     )
   }
-  
 }
+    
 
 
-
-export default Contacts
+export default Contacts;
 
 
 
