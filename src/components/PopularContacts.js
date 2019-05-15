@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Card from './Card'
+
+
 
 class PopularContacts extends Component {
 constructor(props){
@@ -13,10 +16,17 @@ constructor(props){
   render() {
     return (
       <ul>
+        {/* <li>
+        Picture Name Popularity
+        </li> */}
       {
-      this.state.contacts.map ((element,index) => {
+      this.state.contacts.map ((oneContact,index) => {
         return (
-          <li>{{element}}</li>
+          <Card key={index}
+          name={oneContact.name}
+          pic={oneContact.pictureUrl}
+          popular={oneContact.popularity}
+            />
         )
       })
 
