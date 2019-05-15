@@ -4,10 +4,13 @@ import './App.css';
 import contacts from './data/contacts.json';
 import ContactsTable from './ContactsTable';
 
-const selectContacts = [];
-for (let i = 0; i < 5; i++ ) {
-  selectContacts.push(contacts[i]);
-};
+const getContacts = () => {
+  const selectContacts = [];
+  for (let i = 0; i < 5; i++ ) {
+    selectContacts.push(contacts[i]);
+  };
+  return selectContacts;
+}
 
 class App extends Component {
   render() {
@@ -17,7 +20,7 @@ class App extends Component {
           <h1>IronContacts</h1>
         </header>
         <main>
-          <ContactsTable selectedContacts={selectContacts} />
+          <ContactsTable selectedContacts={getContacts()} />
         </main>
       </div>
     );

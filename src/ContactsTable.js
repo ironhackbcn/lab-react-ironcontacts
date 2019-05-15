@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import Contact from './Contact';
 
 class ContactsTable extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      contacts: props.selectedContacts
+    }
+  }
   render(props) {
-    console.log(this.props);
+    console.log(this.props.selectedContacts);
     return (
       <table>
         <tr>
@@ -12,7 +18,7 @@ class ContactsTable extends Component {
           <th>Popularity</th>
         </tr>
       { 
-        this.props.selectedContacts.map( (contact) => <Contact {...contact} /> ) 
+        this.state.contacts.map( (contact) => <Contact {...contact} /> ) 
       }
       </table>
     )
