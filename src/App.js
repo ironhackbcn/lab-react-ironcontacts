@@ -4,6 +4,7 @@ import './App.css';
 import listOfContacts from './data/contacts.json';
 import IronContactsTable from './components/IronContactsTable';
 import RandomBtn from './components/RandomBtn';
+import SortByNameBtn from './components/SortByNameBtn';
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +24,20 @@ class App extends Component {
     // console.log(this.state.contacts);
   };
 
+  handleSortByName = () => {
+    this.setState({
+      contacts: [...this.state.contacts].sort(function(a, b) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      }),
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -30,6 +45,9 @@ class App extends Component {
         <RandomBtn randomContact={this.handleAddRandomContact}>
           Add Random Contact
         </RandomBtn>
+        <SortByNameBtn sortName={this.handleSortByName}>
+          Sort by name
+        </SortByNameBtn>
         <div>
           {this.state.contacts.map((contact, index) => {
             return (
