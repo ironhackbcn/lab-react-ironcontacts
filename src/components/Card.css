@@ -1,0 +1,10 @@
+.Card {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Card-pic-size {
+  height: 10%;
+  width: 10%;
+  object-fit: contain;
+}
