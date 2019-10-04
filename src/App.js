@@ -4,22 +4,21 @@ import "./App.css";
 import contacts from "./data/contacts.json";
 
 class App extends Component {
+  state = {
+    allContactsArray: contacts,
+    contacts: contacts.slice(0,5)
+  };
   render() {
+    const { contact } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header>
+          <h1>Iron Contacts</h1>
+          {
+            contact.map ((artist)=>{
+                return ()
+            });
+          }
         </header>
       </div>
     );
