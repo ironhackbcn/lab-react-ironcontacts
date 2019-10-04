@@ -1,27 +1,68 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import contacts from './data/contacts.json';
+import CardsList from './components/CardsList';
 
+
+  
 class App extends Component {
-  render() {
+  state = {
+    list: contacts.slice(0,5)
+  };
+  onAddItem = () => {
+    this.setState(state => {
+    const randomValue = Math.floor(contacts.length * Math.random())
+    const list = state.list.concat(contacts[randomValue]);
+    return {
+      list,
+      value: '',
+      };
+    });
+  }; 
+  sortByName = () => {
+    const list=this.state.list.sort((a,b) => (a.name > b.name) ? 1 : ((b.name> a.name) ? -1 : 0)); 
+    this.setState({list: list})
+  }; 
+  sortByPopularity = () => {
+    const list=this.state.list.sort((a,b) => (a.popularity < b.popularity) ? 1 : ((b.popularity< a.popularity) ? -1 : 0)); 
+    this.setState({list: list})
+  }; 
+  onDeleteItem = (index) => {
+    let {list} = this.state
+    list.splice(index,1)
+    this.setState({
+      list
+    })
+      
+  };
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        { <button
+          type="button"
+          onClick={this.onAddItem}
+        >
+          Add Random Contact
+        </button> }
+        { <button
+          type="button"
+          onClick={this.sortByName}
+        >
+          Sort By Name
+        </button> }
+        { <button
+          type="button"
+          onClick={this.sortByPopularity}
+        >
+          Sort By Popularity
+        </button> }
+       
+        <CardsList  contacts={this.state.list} onDelete={this.onDeleteItem}/>
+        
+        
       </div>
-    );
+
+    )
   }
 }
 
