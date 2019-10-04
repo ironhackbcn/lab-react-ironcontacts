@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 class Card extends Component {
   render() {
-    const { name, photo, popularity } = this.props;
+    const { name, photo, popularity, handlerDelete, index } = this.props;
     return (
-      <div class="card-Wrapper"> 
+      <div className="card-Wrapper"> 
         <div className="photo-Wrapper">
           <img className="App-photo" src={photo} alt={name + "picture"} />
         </div>
@@ -14,6 +14,9 @@ class Card extends Component {
 
         <div className="popularity-Wrapper">
           <p>{popularity}</p>
+        </div>
+        <div className="popularity-Wrapper">
+          <button onClick ={()=>handlerDelete(index)}>Delete</button>
         </div>
       </div>
     );

@@ -27,7 +27,7 @@
 }
 
 .Jumbotron {
-  max-width: 325px;
+  max-width: 500px;
   margin: 50px auto;
 }
 
@@ -43,6 +43,19 @@ p {
   text-align: left;
   font-weight: bolder;
 }
+
+button {
+  margin: 5px;
+}
+
+.Title{
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+
 
 @keyframes App-logo-spin {
   from {
