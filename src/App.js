@@ -5,6 +5,7 @@ import listOfContacts from './data/contacts.json';
 import IronContactsTable from './components/IronContactsTable';
 import RandomBtn from './components/RandomBtn';
 import SortByNameBtn from './components/SortByNameBtn';
+import SortByPopularity from './components/SortByPopularity';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,20 @@ class App extends Component {
     });
   };
 
+  handleSortByPopularity = () => {
+    this.setState({
+      contacts: [...this.state.contacts].sort(function(a, b) {
+        if (a.popularity < b.popularity) {
+          return 1;
+        }
+        if (a.popularity > b.popularity) {
+          return -1;
+        }
+        return 0;
+      }),
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -48,6 +63,9 @@ class App extends Component {
         <SortByNameBtn sortName={this.handleSortByName}>
           Sort by name
         </SortByNameBtn>
+        <SortByPopularity sortPopularity={this.handleSortByPopularity}>
+          Sort by popularity
+        </SortByPopularity>
         <div>
           {this.state.contacts.map((contact, index) => {
             return (
