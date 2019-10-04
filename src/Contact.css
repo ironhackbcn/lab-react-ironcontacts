@@ -1,0 +1,8 @@
+.contact-row td {
+  display: inline-block;
+  margin: 5px;
+}
+
+.contact-row img {
+  width: 20px;
+}
