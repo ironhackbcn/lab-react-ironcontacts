@@ -22,6 +22,27 @@
 .App-link {
   color: #61dafb;
 }
+.App-photo {
+  width: 64px;
+}
+
+.Jumbotron {
+  max-width: 325px;
+  margin: 50px auto;
+}
+
+.card-Wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: left;
+  font-weight: bolder;
+}
 
 @keyframes App-logo-spin {
   from {
