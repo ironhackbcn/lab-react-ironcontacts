@@ -16,7 +16,8 @@ class Card extends Component {
           <p>{popularity}</p>
         </div>
         <div className="popularity-Wrapper">
-          <button onClick ={()=>handlerDelete(index)}>Delete</button>
+            <p>{index}</p>
+          <button onClick ={()=>handlerDelete({index})}>Delete</button>
         </div>
       </div>
     );

@@ -11,32 +11,49 @@ class App extends Component {
 
   handlerAddContact = () => {
     const { contacts } = this.state;
-    const {allContactsArray} = this.state;
-    const number = Math.floor(Math.random()*this.state.allContactsArray.length);
+    const { allContactsArray } = this.state;
+    const number = Math.floor(
+      Math.random() * this.state.allContactsArray.length
+    );
     const newState = [...contacts, allContactsArray[number]];
-    this.setState({contacts:newState});
-  }
+    this.setState({ contacts: [...newState] });
+  };
 
-  handlerDeleteContact = ({index}) => {
+  handlerDeleteContact = ({ index }) => {
     const { contacts } = this.state;
-    contacts.splice(index,1);
-    this.setState({contacts: contacts});
-  }
+    contacts.splice(index, 1);
+    this.setState({ contacts: contacts });
+  };
 
   handlerSortByName = () => {
-    console.log('hello');
     const { contacts } = this.state;
-    const newState = [...contacts].sort((ArtistA, ArtistB) => {
-      if (ArtistA.name < ArtistB.name ) return -1;
-      if (ArtistA.name > ArtistB.name ) return 1;
+    const newState = contacts.sort((ArtistA, ArtistB) => {
+      if (ArtistA.name < ArtistB.name) {
+        return -1;
+      }
+      if (ArtistA.name > ArtistB.name) {
+        return 1;
+      }
       return 0;
     });
-    this.setState = ({contacts : newState});
-  }
+    this.setState({ contacts: newState }, () => {
+    });
+  };
 
   handlerSortByPopularity = () => {
-    
-  }
+    const { contacts } = this.state;
+    const newState = contacts.sort((ArtistA, ArtistB) => {
+      if (ArtistA.popularity < ArtistB.popularity) {
+        return -1;
+      }
+      if (ArtistA.popularity > ArtistB.popularity) {
+        return 1;
+      }
+      return 0;
+    });
+    this.setState({ contacts: newState }, () => {
+    });
+  };
   render() {
     const { contacts } = this.state;
     return (
@@ -44,7 +61,9 @@ class App extends Component {
         <div className="button-iteraction">
           <button onClick={this.handlerAddContact}>Add Random Contact</button>
           <button onClick={this.handlerSortByName}>Sort by Name</button>
-          <button onClick={this.handlerSortByPopularity}>Sort by popularity</button>
+          <button onClick={this.handlerSortByPopularity}>
+            Sort by popularity
+          </button>
         </div>
         <header className="Jumbotron">
           <h1>Iron Contacts</h1>
@@ -64,14 +83,16 @@ class App extends Component {
           </div>
           {contacts.map((artist, index) => {
             return (
-              <Card
-                key={`${artist[0]}-${index}`}
-                name={artist.name}
-                photo={artist.pictureUrl}
-                popularity={artist.popularity}
-                handlerDelete={this.handlerDeleteContact}
-                index={index}
-              />
+              <div>
+                <Card
+                  key={`${artist[0]}-${index}`}
+                  name={artist.name}
+                  photo={artist.pictureUrl}
+                  popularity={artist.popularity}
+                  handlerDelete={this.handlerDeleteContact}
+                  index={index}
+                />
+              </div>
             );
           })}
         </header>
