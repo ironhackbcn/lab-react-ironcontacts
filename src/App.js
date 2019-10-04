@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import contacts from './data/contacts.json';
+import listOfContacts from './data/contacts.json';
 import IronContactsTable from './components/IronContactsTable';
 import RandomBtn from './components/RandomBtn';
 
@@ -10,27 +10,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      contacts: contacts,
-      contactsInitialFilter: [],
+      contacts: listOfContacts.slice(0, 5),
     };
   }
 
   handleAddRandomContact = () => {
-    const contacts = this.state;
-    this.setState(
-      {
-        contacts: [...contacts],
-        contactsInitialFilter: ,
-      },
-      () => {
-        console.log('🤣', this.state.contacts);
-      },
-    );
+    const randomContact =
+      listOfContacts[Math.floor(Math.random() * listOfContacts.length)];
+    this.setState({
+      contacts: [...this.state.contacts, randomContact],
+    });
+    // console.log(this.state.contacts);
   };
 
   render() {
-    const initialSize = 5;
-    const contactsInitialFilter = contacts.slice(0, initialSize);
     return (
       <div className="App">
         <h1>IronContacts</h1>
@@ -38,7 +31,7 @@ class App extends Component {
           Add Random Contact
         </RandomBtn>
         <div>
-          {contactsInitialFilter.map((contact, index) => {
+          {this.state.contacts.map((contact, index) => {
             return (
               <IronContactsTable
                 key={`${contact[0]}-${index}`}

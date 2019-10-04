@@ -14,7 +14,7 @@ export default class IronContactsTable extends Component {
           </tr>
           <tr className="contact-description">
             <td className="contact-picture">
-              <img src={pictureUrl}></img>
+              <img src={pictureUrl} alt=""></img>
             </td>
             <td className="contact-name">{name}</td>
             <td className="contact-popularity">
