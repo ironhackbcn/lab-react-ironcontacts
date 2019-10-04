@@ -1,33 +1,83 @@
+body {
+  background-color: #e8f3ee;
+}
+
 .App {
   text-align: center;
+  padding: 1em;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: #172f42;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/** Contacts wrapper **/
+
+.wrapper table {
+  width: 100%;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+table img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table,
+th,
+td {
+  border-collapse: collapse;
+}
+
+th {
+  border-bottom: 4px solid #e8f3ee;
+  padding: 12px 0;
+  color: #172f42;
+}
+
+td {
+  padding: 12px 5px;
+}
+
+th,
+td {
+  width: 25%;
+}
+
+td p {
+  font-size: 14px;
+  color: #172f42;
+}
+
+tr {
+  background-color: #238189;
+}
+
+tr:nth-child(even) {
+  background-color: #3fa8b3;
+}
+
+/** Buttons **/
+button {
+  border: 0px;
+  border-radius: 6px;
+  box-shadow: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #3fa8b3;
+  color: #ffffff;
+  padding: 16px 24px;
+  font-size: 14px;
+  margin: 6px 12px;
+  font-weight: bold;
+}
+
+.btn-delete {
+  background-color: #ff674d;
+  padding: 12px 18px;
+  color: #fff;
+  margin: 0 5px;
 }
