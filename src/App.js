@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import contacts from './data/contacts.json';
+import IronContactsTable from './components/IronContactsTable';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      newContact: contacts,
+      list: [],
+    };
+    console.log('contacts', contacts);
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>IronContacts</h1>
+        <div>
+          {contacts.map((contact, index) => {
+            return (
+              <IronContactsTable
+                key={`${contact[0]}-${index}`}
+                name={contact.name}
+                pictureUrl={contact.pictureUrl}
+                popularity={contact.popularity}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
