@@ -46,11 +46,43 @@ class App extends Component {
     })
   }
 
+  sortByName = () => {
+    const { firstContacts } = this.state;
+    const sortedContacts = firstContacts.sort((ContactA, ContactB) => {
+      if (ContactA.name > ContactB.name) {
+        return 1;
+      } else if (ContactA.name < ContactB.name) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      firstContacts: sortedContacts,
+    })
+  }
+
+  sortByPopularity = () => {
+    const { firstContacts } = this.state;
+    const sortedContactsByPopularity = firstContacts.sort((ContactA, ContactB) => {
+      if (ContactA.popularity > ContactB.popularity) {
+        return 1;
+      } else if (ContactA.popularity < ContactB.popularity) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      firstContacts: sortedContactsByPopularity,
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>IronContacts</h1>
         <button onClick={this.addContact} className="btn">Add Random Contact</button>
+        <button onClick={this.sortByName} className="btn">Sort by name</button>
+        <button onClick={this.sortByPopularity} className="btn">Sort by popularity</button>
         <table className="contact-table">
           <thead className="table-heading">
             <tr>
