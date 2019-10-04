@@ -17,7 +17,9 @@ export default class IronContactsTable extends Component {
               <img src={pictureUrl}></img>
             </td>
             <td className="contact-name">{name}</td>
-            <td className="contact-popularity">{popularity}</td>
+            <td className="contact-popularity">
+              {Math.round(popularity * 100) / 100}
+            </td>
           </tr>
         </table>
       </div>

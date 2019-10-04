@@ -12,14 +12,15 @@ class App extends Component {
       newContact: contacts,
       list: [],
     };
-    console.log('contacts', contacts);
   }
   render() {
+    const initialSize = 5;
+    const contactsInitialFilter = contacts.slice(0, initialSize);
     return (
       <div className="App">
         <h1>IronContacts</h1>
         <div>
-          {contacts.map((contact, index) => {
+          {contactsInitialFilter.map((contact, index) => {
             return (
               <IronContactsTable
                 key={`${contact[0]}-${index}`}
