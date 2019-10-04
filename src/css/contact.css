@@ -1,0 +1,10 @@
+.contact img {
+  width: 100px;
+}
+.contact {
+  display: flex;
+  align-items: center;
+}
+.contact div {
+  padding: 20px;
+}
