@@ -3,7 +3,7 @@ import './IronContactsTable.css';
 
 export default class IronContactsTable extends Component {
   render() {
-    const { name, pictureUrl, popularity } = this.props;
+    const { name, pictureUrl, popularity,deleteContact } = this.props;
     return (
       <div className="table">
         <table>
@@ -19,6 +19,9 @@ export default class IronContactsTable extends Component {
             <td className="contact-name">{name}</td>
             <td className="contact-popularity">
               {Math.round(popularity * 100) / 100}
+            </td>
+            <td className="contact-delete">
+              <button className="RandomBtn" onClick={deleteContact}>Delete</button>
             </td>
           </tr>
         </table>

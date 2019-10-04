@@ -53,6 +53,13 @@ class App extends Component {
     });
   };
 
+  deleteContact = (index) => {
+    this.state.contacts.splice(index,1);
+    this.setState({
+      contacts: [...this.state.contacts],
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -74,6 +81,7 @@ class App extends Component {
                 name={contact.name}
                 pictureUrl={contact.pictureUrl}
                 popularity={contact.popularity}
+                deleteContact={() => this.deleteContact(index)}
               />
             );
           })}
