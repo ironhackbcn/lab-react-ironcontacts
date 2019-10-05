@@ -3,8 +3,11 @@ import "./UserList.css";
 import Button from "./Button";
 
 class UserList extends Component {
+  HandleDelete = () => {
+    this.props.onClick(this.props.id);
+  };
   render() {
-    const { name, pictureUrl, popularity, onClick } = this.props;
+    const { name, pictureUrl, popularity } = this.props;
 
     const newPopularity = Math.round(popularity * 100) / 100;
 
@@ -16,7 +19,7 @@ class UserList extends Component {
         <div className="left">{name} </div>
         <div className="left">{newPopularity} </div>
         <div>
-          <Button onClick={onClick}>delete</Button>
+          <Button onClick={this.HandleDelete}>delete</Button>
         </div>
       </div>
     );

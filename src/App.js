@@ -64,7 +64,7 @@ class App extends Component {
       }
     );
   };
-  HandleDelete(index) {
+  HandleDelete = index => {
     const { fiveContacts } = this.state;
     fiveContacts.splice(index, 1);
     this.setState(
@@ -73,7 +73,7 @@ class App extends Component {
       },
       () => {}
     );
-  }
+  };
 
   render() {
     const { fiveContacts } = this.state;
@@ -96,9 +96,8 @@ class App extends Component {
                   name={user.name}
                   pictureUrl={user.pictureUrl}
                   popularity={user.popularity}
-                  onClick={e => {
-                    this.HandleDelete(index);
-                  }}
+                  id={index}
+                  onClick={this.HandleDelete}
                 />
               </div>
             );
