@@ -31,3 +31,20 @@
     transform: rotate(360deg);
   }
 }
+
+img {
+  width : 5em;
+}
+
+.wrapper {
+  flex-direction: column;
+}
+
+.unit {
+  justify-content: space-between;
+}
+
+.unit-img, .unit-name, .unit-popularity, .unit-titles {
+  display: inline-block;
+  padding: 2em 2em;
+}
