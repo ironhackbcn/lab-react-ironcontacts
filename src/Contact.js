@@ -7,7 +7,8 @@ class Contact extends Component {
       <tr className="contact-row">
         <td><img src={this.props.pictureUrl} alt="celebrity profile pic" /></td>
         <td>{this.props.name}</td>
-        <td>{this.props.popularity}</td>
+        <td>{this.props.popularity.toFixed(2)}</td>
+        <button className="delete-btn" onClick={this.props.clickFunction}>Delete</button>
       </tr>
     );
   }

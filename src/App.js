@@ -76,6 +76,15 @@ class App extends Component {
     })
   }
 
+  deleteContact = index => {
+    const { firstContacts } = this.state;
+    const newContacts = [...firstContacts].splice(index, 1);
+    // const newContacts = [...firstContacts].filter(() => {return }); lo estaba intentando con filter y no está acabado
+    this.setState({
+      firstContacts: newContacts,
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -94,7 +103,7 @@ class App extends Component {
           <tbody>
             {this.state.firstContacts.map((person, index) => {
               return (
-                <Contact key={index} pictureUrl={person.pictureUrl} name={person.name} popularity={person.popularity} />
+                <Contact key={index} pictureUrl={person.pictureUrl} name={person.name} popularity={person.popularity} clickFunction={() => this.deleteContact({ index })} />
               )
             })}
           </tbody>
