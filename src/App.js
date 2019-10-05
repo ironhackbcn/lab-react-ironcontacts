@@ -5,7 +5,7 @@ import Contact from './Contact';
 
 class App extends Component {
   state = {
-    firstContacts: [
+    firstContacts: [ //slice para que muestre solo 5
       {
         "name": "Idris Elba",
         "pictureUrl": "https://image.tmdb.org/t/p/w500/d9NkfCwczP0TjgrjpF94jF67SK8.jpg",
@@ -76,12 +76,12 @@ class App extends Component {
     })
   }
 
-  deleteContact = index => {
+  deleteContact = id => {
     const { firstContacts } = this.state;
-    const newContacts = [...firstContacts].splice(index, 1);
-    // const newContacts = [...firstContacts].filter(() => {return }); lo estaba intentando con filter y no está acabado
+    const deletedContact = [...firstContacts].slice(id, 1);
+    // Falta arreglar el slice para que borre solo el eliminado
     this.setState({
-      firstContacts: newContacts,
+      firstContacts: [[...firstContacts] - deletedContact],
     })
   }
 
@@ -103,7 +103,13 @@ class App extends Component {
           <tbody>
             {this.state.firstContacts.map((person, index) => {
               return (
-                <Contact key={index} pictureUrl={person.pictureUrl} name={person.name} popularity={person.popularity} clickFunction={() => this.deleteContact({ index })} />
+                <Contact
+                  key={index}
+                  pictureUrl={person.pictureUrl}
+                  name={person.name}
+                  popularity={person.popularity}
+                  id={index}
+                  clickFunction={this.deleteContact} />
               )
             })}
           </tbody>
