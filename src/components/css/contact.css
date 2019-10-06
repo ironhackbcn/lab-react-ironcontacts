@@ -1,0 +1,15 @@
+.contactLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contactLine td {
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+  font-size: 1rem;
+}
+
+.contactLine img {
+  width: 30px;
+}
