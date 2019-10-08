@@ -33,7 +33,7 @@ class App extends Component {
 
   sortByNames = () => {
     const { contacts } = this.state;
-    const sortedContacts = contacts.sort( 
+    const sortedContacts = contacts.sort(
       (a,b) => {
       if(a.name < b.name){
         return -1;
@@ -50,9 +50,14 @@ class App extends Component {
 
     };
 
-  sortByPopularity(){
+  sortByPopularity = () => {
+    const { contacts } = this.state;
+    const sortedByPop = contacts.sort((a,b) => a.popularity - b.popularity );
 
-  }
+    this.setState({
+      contacts: sortedByPop
+    })
+  };
 
   render() {
     return (
