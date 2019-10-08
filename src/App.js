@@ -7,7 +7,6 @@ import Button from './components/Button';
 let firstFiveContacts = contacts.slice(0,5);
 let randomContact = contacts[Math.floor(Math.random() * contacts.length)];
 
-
 class App extends Component {
   state = {
     contacts: firstFiveContacts,
@@ -22,7 +21,7 @@ class App extends Component {
     this.setState({
       contacts: [contacts[random], ...contacts]
     })
-  
+
   }
 
   addContact = () => {
@@ -30,6 +29,29 @@ class App extends Component {
     this.setState({
       contacts: [randomContact, ...contacts]
     })
+  }
+
+  sortByNames = () => {
+    const { contacts } = this.state;
+    const sortedContacts = contacts.sort( 
+      (a,b) => {
+      if(a.name < b.name){
+        return -1;
+      } else if(a.name > b.name){
+        return 1;
+      } else{
+        return 0;
+      }
+    })
+    
+    this.setState({
+      contacts: sortedContacts
+    })
+
+    };
+
+  sortByPopularity(){
+
   }
 
   render() {
@@ -42,6 +64,14 @@ class App extends Component {
 
         <Button myProp={this.clickAddRandomContact}>
           Add Random Contact
+        </Button>
+
+        <Button myProp={this.sortByNames}>
+          Sort by name
+        </Button>
+
+        <Button myProp={this.sortByPopularity}>
+          Sort by popularity
         </Button>
 
         <div className="wrapper">
