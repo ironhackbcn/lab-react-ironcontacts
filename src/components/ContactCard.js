@@ -14,7 +14,7 @@ function ContactCard(props){
                 </tr>
                 <tr>
                     <td>
-                        <img src={pictureUrl} alt="actor-picture" width="30%"/>
+                        <img src={pictureUrl} alt="actor"/>
                     </td>
                     <td>{name}</td>
                     <td>{popularity}</td>
