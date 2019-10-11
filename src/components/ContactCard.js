@@ -1,9 +1,10 @@
 import React from 'react';
+import Button from './Button';
 
 function ContactCard(props){
     
-    const {name, pictureUrl, popularity} = props;
-    
+    const {name, pictureUrl, popularity, remove} = props;
+    console.log({remove})
     return (
         <div className="contact-card">
             <table className="table-contact-card">
@@ -11,6 +12,7 @@ function ContactCard(props){
                     <th>Picture</th>
                     <th>Name</th>
                     <th>Popularity</th>
+                    <th>Action</th>
                 </tr>
                 <tr>
                     <td>
@@ -18,6 +20,11 @@ function ContactCard(props){
                     </td>
                     <td>{name}</td>
                     <td>{popularity}</td>
+                    <td>
+                        <Button myProp={remove}>
+                            Delete
+                        </Button>
+                    </td>
                 </tr>
             </table>
         </div>

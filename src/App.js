@@ -16,12 +16,9 @@ class App extends Component {
     const { contacts } = this.state;
     let random = Math.floor(Math.random() * (contacts.length));
     // console.log(`obtengo el random: ${random}`);
-    // console.log('clickAddRandomContact',this.state.contacts)
-    // console.log('[contacts[random], ...contacts]', [contacts[random], ...contacts])
     this.setState({
       contacts: [contacts[random], ...contacts]
     })
-
   }
 
   addContact = () => {
@@ -47,7 +44,6 @@ class App extends Component {
     this.setState({
       contacts: sortedContacts
     })
-
     };
 
   sortByPopularity = () => {
@@ -58,14 +54,32 @@ class App extends Component {
       contacts: sortedByPop
     })
   };
+  
+  removeContact = (contact) => {
+    const {contacts} = this.state;
+
+    // remove the contact 
+    /* exemple with arrow functions
+     let tasks = [
+      {'name': 'write', 'duration': 60},
+      {'name': 'workout', 'duration': 120},
+      {'name': 'duolingo', 'duration': 170}
+    ]; 
+     let dificultad = tasks.filter((task) => task.duration >= 120);
+    */
+
+    const contactFiltered = contacts.filter((contactActtual) => contactActtual.name !== contact.name);
+    console.log("contactos filtrados", contactFiltered);
+
+    this.setState({
+      contacts: contactFiltered
+    })
+  };
 
   render() {
     return (
       <div className="App">
         <h1>IronContacts</h1>
-        {/* <button onClick={this.clickAddRandomContact}>
-          Add Random Contact
-        </button> */}
 
         <Button myProp={this.clickAddRandomContact}>
           Add Random Contact
@@ -87,14 +101,12 @@ class App extends Component {
                 name={card.name} 
                 pictureUrl={card.pictureUrl}
                 popularity={card.popularity}
+                remove={this.removeContact.bind(this.state, card)}
               />
             );
           })}
         </div>
 
-        {/* <ContactCard>
-          theContacts = {this.state.contacts}
-        </ContactCard> */}
       </div>
     );
   }
