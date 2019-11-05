@@ -1,26 +1,31 @@
 import React, {
   Component
 } from 'react';
-import contacts from '../data/contacts.json';
+import contactsJSON from '../data/contacts.json';
 import Contact from './Contact';
 
 export default class ContactList extends Component {
-  
-  // Get first 5 contacts
-  shortContacts = (contacts) => {
-    return contacts.slice(0,5);
-  }
 
+  constructor() {
+    super();
+    this.state = {
+      contacts: contactsJSON.slice(0, 5)
+    }
+  }
+  
   // Get a random contact
-  getRandom = () => {
-    let randomIndex = Math.floor((Math.random() * contacts.length) + 0);
-    return contacts[randomIndex];
+  addRandom = () => {
+    let randomIndex = Math.floor((Math.random() * contactsJSON.length) + 0);
+    this.state.contacts.push(contactsJSON[randomIndex]);
+      this.setState({
+      contacts: this.state.contacts
+    })   
   }
 
   render () {
     return (
       <div>
-        <button>Add Random Contact</button>
+        <button onClick={ () => this.addRandom() }>Add Random Contact</button>
         <table>
           <thead>
             <tr>
@@ -31,7 +36,7 @@ export default class ContactList extends Component {
           </thead>
           <tbody>
             {
-              this.shortContacts(contacts).map((contact, index) =>
+              this.state.contacts.map((contact, index) =>
                 <Contact
                   key={index}
                   pictureUrl={contact.pictureUrl}
