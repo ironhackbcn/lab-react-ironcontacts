@@ -12,3 +12,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.table{
+  width: 80%;
+  margin: 20px auto;
+  border: 5px solid salmon;
+  padding: 40px;
+}
+
+.titols{
+margin:20px auto;
+}
+
+.btn{
+  display: inline-block;
+  margin:0 40px;
+  width: auto;
+  background-color: coral;
+  padding:10px;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  color:rgb(5, 5, 5);
+  text-align:center;
+  }
+
+
+.delete-btn{
+  display: inline-block;
+  margin:0 40px;
+  width: 60%;
+  background-color: crimson;
+  padding:10px;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  color:rgb(5, 5, 5);
+  text-align:center;
+    
+}
