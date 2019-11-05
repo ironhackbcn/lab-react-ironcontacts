@@ -3,10 +3,11 @@ import contacts from '../data/contacts.json';
 import Contact from './Contact';
 
 const ContactList = () => {
+  const shortContacts = contacts.slice(0,5);
   return (
     <tbody>
       {
-        contacts.map((contact, index) =>
+        shortContacts.map((contact, index) =>
           <Contact
             key={index}
             pictureUrl={contact.pictureUrl}
