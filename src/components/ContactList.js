@@ -37,6 +37,17 @@ export default class ContactList extends Component {
     })
   }
 
+  // Delete contact
+  deleteContact = (name) => {
+    let newContacts = [...this.state.contacts];
+    this.setState({
+      contacts: newContacts.filter((contact) => {
+        return contact.name !== name
+      })
+    })
+    console.log('!')
+  }
+
   render () {
     return (
       <div>
@@ -59,6 +70,7 @@ export default class ContactList extends Component {
                   pictureUrl={contact.pictureUrl}
                   name={contact.name}
                   popularity={contact.popularity}
+                  deleteContact={this.deleteContact}
                 />
               )
             }
