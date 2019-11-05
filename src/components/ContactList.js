@@ -9,6 +9,7 @@ export default class ContactList extends Component {
   constructor() {
     super();
     this.state = {
+      // Start with only 5 contacts
       contacts: contactsJSON.slice(0, 5)
     }
   }
@@ -17,15 +18,31 @@ export default class ContactList extends Component {
   addRandom = () => {
     let randomIndex = Math.floor((Math.random() * contactsJSON.length) + 0);
     this.state.contacts.push(contactsJSON[randomIndex]);
-      this.setState({
+    this.setState({
       contacts: this.state.contacts
     })   
+  }
+
+  // Sort by name
+  sortName = () => {
+    this.setState({
+      contacts: this.state.contacts.sort((a, b) => a.name.localeCompare(b.name))
+    })
+  }
+
+  // Sort by popularity
+  sortPopularity = () => {
+    this.setState({
+      contacts: this.state.contacts.sort((a, b) => b.popularity - a.popularity)
+    })
   }
 
   render () {
     return (
       <div>
         <button onClick={ () => this.addRandom() }>Add Random Contact</button>
+        <button onClick={ () => this.sortName() }>Sort by name</button>
+        <button onClick={ () => this.sortPopularity() }>Sort by popularity</button>
         <table>
           <thead>
             <tr>
