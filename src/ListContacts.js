@@ -42,15 +42,11 @@ class ListContacts extends Component {
   }
 
   
-    const contactsCopy = [...this.state.contacts]
+ /*    const contactsCopy = [...this.state.contacts]
     contactsCopy.splice(contactIndex, 1);
     this.ListeningStateChangedEvent({
       contacts: contactsCopy
-  })
-
-
-
-
+  }) */
 
 
     render() {
