@@ -31,3 +31,23 @@
     transform: rotate(360deg);
   }
 }
+.card {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 1rem 0;
+
+}
+
+.card-img{
+  width: auto;
+  height: 120px;
+}
+.card-title{
+  padding: 0 1rem;
+}
+
+.card-popularity{
+  padding: 0 1rem;
+}
