@@ -23,6 +23,18 @@
   color: #61dafb;
 }
 
+.img {
+  width: 20%;
+}
+
+.btn {
+  font-size: 2rem;
+  background: #61dafb;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
