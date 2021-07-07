@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+
+.contact-header{
+ display: flex;
+ justify-content: center;
+}
+
+h3{
+  margin: 1rem;
+}
+
+img{
+  height: 4rem;
+}
+
+button{
+  padding: 0.3rem;
+  border-radius: 5px;
+}
